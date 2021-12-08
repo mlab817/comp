@@ -48,7 +48,7 @@ class CompanyController extends Controller
                 ->preservingOriginal()
                 ->toMediaCollection();
         }
-        
+
         return redirect()->route('companies.index')
             ->with('success','Successfully added company.');
     }
