@@ -14,11 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['middleware' => 'auth'], function() {
-    Route::get('/', function () {
-        return view('welcome');
-    });
+Route::redirect('/', 'companies');
 
+Route::group(['middleware' => 'auth'], function() {
     Route::resource('companies', \App\Http\Controllers\CompanyController::class);
     Route::resource('employees', \App\Http\Controllers\EmployeeController::class);
 });
