@@ -14,12 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::group(['middleware' => 'auth'], function() {
+    Route::get('/', function () {
+        return view('welcome');
+    });
 
-Route::resource('companies', \App\Http\Controllers\CompanyController::class);
-Route::resource('employees', \App\Http\Controllers\EmployeeController::class);
+    Route::resource('companies', \App\Http\Controllers\CompanyController::class);
+    Route::resource('employees', \App\Http\Controllers\EmployeeController::class);
+});
 
 Auth::routes(['register' => false]);
 
